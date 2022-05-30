@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://assets.codepen.io/3198845/WMWebsiteMockupsTESTINGONLY.css',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.001/css.min.js',
   }
   
   let WebsiteMockupFunctions = (function(){
