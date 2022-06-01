@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.001/css.min.js',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.002/css.min.js',
   }
   
   let WebsiteMockupFunctions = (function(){
@@ -174,13 +174,14 @@
       createScrollListener(this);
       
       this.elements.container.classList.add('loaded')
+      this.addCSS();
     }
 
     /**
      * Add CSS
      */
     Constructor.prototype.addCSS = function () {
-      let cssFile = document.querySelector(`#${pS.id}`);
+      let cssFile = document.querySelector(`#${pS.id}-css`);
       function addCSSFile() {
         let head = document.getElementsByTagName("head")[0],
             link = document.createElement("link");
