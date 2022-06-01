@@ -5,10 +5,15 @@
 ========== */
 
 .wm-website-mockup-block {
+  --shadow: var(--shadow-medium);
+  --border: 0px solid currentColor;
+  --background: transparent;
+
   --scroll-speed: 8s;
   
-  --scale: 0;
+  --hover-scale: 0;
   --hover-speed: .8s;
+  --hover-shadow:none;
 
   --mobile-arrow-thickness: 2px;
   --mobile-arrow-size: 10px;
@@ -20,16 +25,18 @@
   --scrollbar-color:#333;
   --scrollbar-track:#ccc;
 
-  --aspect-ratio: 4 / 3;
+  --aspect-ratio: 3 / 4;
+  --tablet-aspect-ratio: 1 / 1;
+  --mobile-aspect-ratio: 4 / 3;
 
-  --shadow-light:
+  --light:
     0.4px 0.4px 1px hsla(0,0%,0%, 0.25),
     1.5px 1.4px 1.9px -3.9px hsla(0,0%,0%, 0.19);
-  --shadow-medium:
+  --medium:
     0.4px 0.4px 0.5px hsla(0,0%,0%, 0.17),
     1.6px 1.5px 2px -2px hsla(0,0%,0%, 0.13),
     7.5px 7px 9.3px -3.9px hsla(0,0%,0%, 0.09);
-  --shadow-heavy: 0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
+  --heavy: 0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
     2.9px 2.7px 3.6px -1px hsla(0,0%,0%, 0.28),
     9.6px 8.8px 11.8px -2px hsla(0,0%,0%, 0.24),
     25.5px 23.6px 31.5px -3px hsla(0,0%,0%, 0.19),
@@ -38,11 +45,16 @@
 
 .wm-website-mockup{
   transform: scale(1);
+  box-shadow: var(--shadow);
   transition: transform var(--hover-speed) ease,
     box-shadow var(--hover-speed) ease;
+  border:var(--border-thickness, 0px) solid var(--border-color, currentColor);
 }
-.wm-website-mockup:hover {
-  transform: scale(calc(1 + (var(--scale) / 100) ));
+@media(hover:hover) {
+  .wm-website-mockup:hover {
+    transform: scale(calc(1 + (var(--hover-scale) / 100) ));
+    box-shadow:var(--hover-shadow);
+  }
 }
 
 
@@ -171,6 +183,20 @@
   }
 }
 
+/*Tablet Aspect Ratio*/
+@media(max-width:1024px) {
+  .wm-website-mockup-block {
+    --aspect-ratio: var(--tablet-aspect-ratio);
+  }
+}
+
+/*Mobile Aspect Ratio*/
+@media(max-width:767px) {
+  .wm-website-mockup-block {
+    --aspect-ratio: var(--mobile-aspect-ratio);
+  }
+}
+
 /*Hide Squarespace Block*/
 body:not(.sqs-edit-mode-active) .wm-website-mockup-block .sqs-block-content{
   display: none;
@@ -260,6 +286,18 @@ body:not(.sqs-edit-mode-active) .wm-website-mockup-block .sqs-block-content{
 }
 .sqs-device-view-phone .wm-website-mockup .touch-container.scrolled{
   opacity:0;
+}
+
+/*Tablet Aspect Ratio*/
+@media(max-width:1274px) {
+.sqs-device-view-desktop .wm-website-mockup-block {
+    --aspect-ratio: var(--tablet-aspect-ratio);
+  }
+}
+
+/*Mobile Aspect Ratio*/
+.sqs-device-view-phone .wm-website-mockup-block {
+  --aspect-ratio: var(--mobile-aspect-ratio);
 }
 
 @keyframes bounce {
