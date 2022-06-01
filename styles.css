@@ -5,10 +5,6 @@
 ========== */
 
 .wm-website-mockup-block {
-  --shadow: var(--shadow-medium);
-  --border: 0px solid currentColor;
-  --background:transparent;
-
   --scroll-speed: 8s;
   
   --scale: 0;
@@ -24,29 +20,26 @@
   --scrollbar-color:#333;
   --scrollbar-track:#ccc;
 
-  --aspect-ratio: 1 / 1;
+  --aspect-ratio: 4 / 3;
 
   --shadow-light:
-    0.4px 0.4px 1px hsla(0,0,0, 0.25),
-    1.5px 1.4px 1.9px -3.9px hsla(0,0,0, 0.19);
+    0.4px 0.4px 1px hsla(0,0%,0%, 0.25),
+    1.5px 1.4px 1.9px -3.9px hsla(0,0%,0%, 0.19);
   --shadow-medium:
-    0.4px 0.4px 0.5px hsla(0,0,0, 0.17),
-    1.6px 1.5px 2px -2px hsla(0,0,0, 0.13),
-    7.5px 7px 9.3px -3.9px hsla(0,0,0, 0.09);
-  --shadow-heavy: 0.4px 0.4px 0.5px hsla(0,0,0, 0.33),
-    2.9px 2.7px 3.6px -1px hsla(0,0,0, 0.28),
-    9.6px 8.8px 11.8px -2px hsla(0,0,0, 0.24),
-    25.5px 23.6px 31.5px -3px hsla(0,0,0, 0.19),
-    56px 51.7px 69.2px -3.9px hsla(0,0,0, 0.14);
+    0.4px 0.4px 0.5px hsla(0,0%,0%, 0.17),
+    1.6px 1.5px 2px -2px hsla(0,0%,0%, 0.13),
+    7.5px 7px 9.3px -3.9px hsla(0,0%,0%, 0.09);
+  --shadow-heavy: 0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
+    2.9px 2.7px 3.6px -1px hsla(0,0%,0%, 0.28),
+    9.6px 8.8px 11.8px -2px hsla(0,0%,0%, 0.24),
+    25.5px 23.6px 31.5px -3px hsla(0,0%,0%, 0.19),
+    56px 51.7px 69.2px -3.9px hsla(0,0%,0%, 0.14);
 }
 
 .wm-website-mockup{
-  box-shadow: var(--shadow);
   transform: scale(1);
-  background: var(--background);
   transition: transform var(--hover-speed) ease,
     box-shadow var(--hover-speed) ease;
-  border: var(--border);
 }
 .wm-website-mockup:hover {
   transform: scale(calc(1 + (var(--scale) / 100) ));
