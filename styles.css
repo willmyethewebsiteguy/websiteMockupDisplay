@@ -1,30 +1,28 @@
 /*==========
-  Version 0.1
+  Version 1.0
   Squarespace Website Mockups
   Copyright Will Myers 
 ========== */
 
 .wm-website-mockup-block {
+  --scroll-speed: 8s;
   --shadow: var(--shadow-medium);
   --border: 0px solid currentColor;
   --background: transparent;
-
-  --scroll-speed: 8s;
-  
-  --hover-scale: 0;
-  --hover-speed: .8s;
-  --hover-shadow:none;
 
   --mobile-arrow-thickness: 2px;
   --mobile-arrow-size: 10px;
   --mobile-arrow-color: white;
   --mobile-bkg-color: black;
   --mobile-bkg-opacity: .5;
-  
   --scrollbar-width: 2px;
   --scrollbar-color:#333;
   --scrollbar-track:#ccc;
-
+  
+  --hover-scale: 0;
+  --hover-speed: .8s;
+  --hover-shadow:none;
+  
   --aspect-ratio: 3 / 4;
   --tablet-aspect-ratio: 1 / 1;
   --mobile-aspect-ratio: 4 / 3;
@@ -33,10 +31,11 @@
     0.4px 0.4px 1px hsla(0,0%,0%, 0.25),
     1.5px 1.4px 1.9px -3.9px hsla(0,0%,0%, 0.19);
   --medium:
-    0.4px 0.4px 0.5px hsla(0,0%,0%, 0.17),
-    1.6px 1.5px 2px -2px hsla(0,0%,0%, 0.13),
-    7.5px 7px 9.3px -3.9px hsla(0,0%,0%, 0.09);
-  --heavy: 0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
+    0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
+    9.6px 8.8px 11.8px -2px hsla(0,0%,0%, 0.24),
+    25.5px 23.6px 31.5px -3px hsla(0,0%,0%, 0.19);
+  --heavy: 
+    0.4px 0.4px 0.5px hsla(0,0%,0%, 0.33),
     2.9px 2.7px 3.6px -1px hsla(0,0%,0%, 0.28),
     9.6px 8.8px 11.8px -2px hsla(0,0%,0%, 0.24),
     25.5px 23.6px 31.5px -3px hsla(0,0%,0%, 0.19),
@@ -144,7 +143,7 @@
     z-index:2;
     position:absolute;
     bottom:0;
-    height:30px;
+    height:40px;
     width:100%;
   }
   .wm-website-mockup .touch-background:before {
@@ -186,14 +185,14 @@
 /*Tablet Aspect Ratio*/
 @media(max-width:1024px) {
   .wm-website-mockup-block {
-    --aspect-ratio: var(--tablet-aspect-ratio);
+    --aspect-ratio: var(--tablet-aspect-ratio) !important;
   }
 }
 
 /*Mobile Aspect Ratio*/
 @media(max-width:767px) {
   .wm-website-mockup-block {
-    --aspect-ratio: var(--mobile-aspect-ratio);
+    --aspect-ratio: var(--mobile-aspect-ratio) !important;
   }
 }
 
