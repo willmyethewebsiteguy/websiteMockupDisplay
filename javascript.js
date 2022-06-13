@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.002/css.min.js',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.003/css.min.css',
   }
   
   let WebsiteMockupFunctions = (function(){
@@ -122,7 +122,6 @@
       }
 
       function handleEvent() {
-        console.log('scrolling');
         if (hasScrolled(container)) {
           touchElement.classList.add('scrolled')
         } else {
@@ -173,7 +172,7 @@
       // Add Scroll Listener
       createScrollListener(this);
       
-      this.elements.container.classList.add('loaded')
+      this.elements.container.classList.add('loaded');
       this.addCSS();
     }
 
