@@ -5,7 +5,7 @@
 ========== */
 
 .wm-website-mockup-block {
-  --scroll-speed: 8s;
+  --scroll-speed: 15s;
   --shadow: var(--shadow-medium);
   --border: 0px solid currentColor;
   --background: transparent;
@@ -23,9 +23,9 @@
   --hover-speed: .8s;
   --hover-shadow:none;
   
-  --aspect-ratio: 3 / 4;
+  --aspect-ratio: 1 / 1;
   --tablet-aspect-ratio: 1 / 1;
-  --mobile-aspect-ratio: 4 / 3;
+  --mobile-aspect-ratio: 1 / 1;
 
   --light:
     0.4px 0.4px 1px hsla(0,0%,0%, 0.25),
@@ -49,14 +49,6 @@
     box-shadow var(--hover-speed) ease;
   border:var(--border-thickness, 0px) solid var(--border-color, currentColor);
 }
-@media(hover:hover) {
-  .wm-website-mockup:hover {
-    transform: scale(calc(1 + (var(--hover-scale) / 100) ));
-    box-shadow:var(--hover-shadow);
-  }
-}
-
-
 
 /*CORE*/
 .wm-website-mockup .overflow-wrapper{
@@ -64,6 +56,12 @@
   aspect-ratio: var(--aspect-ratio);
   height: 100%;
   width: 100%;
+  
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
 }
 .wm-website-mockup a {
   display:block;
@@ -95,9 +93,14 @@
   transition-duration:calc(var(--scroll-speed) / 2);
   transition-property:transform;
   will-change: transform;
+  pointer-events: none;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
+  .wm-website-mockup:hover {
+    transform: scale(calc(1 + (var(--hover-scale) / 100) ));
+    box-shadow:var(--hover-shadow);
+  }
   .wm-website-mockup .overflow-wrapper{
     overflow-y: hidden;
   }
@@ -110,7 +113,7 @@
   }
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) {
   .wm-website-mockup .overflow-wrapper{
     overflow-y: scroll;
     overflow-x: none;
