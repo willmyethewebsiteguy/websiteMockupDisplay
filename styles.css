@@ -69,6 +69,17 @@
 .wm-website-mockup .touch-container{
   position:relative;
 }
+@supports not (aspect-ratio: 1/1) {
+  .sqs-layout .wm-website-mockup .overflow-wrapper{
+    height:0;
+    padding-top: calc(var(--aspect-ratio) * 100%);
+  }
+  .sqs-layout .wm-website-mockup img {
+    position:absolute;
+  }
+}
+
+
 
 /*Fluid Blocks*/
 .fe-block .wm-website-mockup{
