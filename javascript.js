@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.005/css.min.css',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.006/css.min.css',
   }
   
   let WebsiteMockupFunctions = (function(){
