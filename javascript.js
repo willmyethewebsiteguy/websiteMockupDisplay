@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0.006/css.min.css',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0/css.min.css',
   }
   
   let WebsiteMockupFunctions = (function(){
@@ -233,7 +233,9 @@
 </div>`
 
         if(instance.elements.link) {
-          html = `<a href="${instance.elements.link.href}" class="overflow-wrapper">
+          let isNewTab = '_self';
+          if (instance.elements.link.getAttribute('target') == '_blank') isNewTab = '_blank';
+          html = `<a target="${isNewTab}" href="${instance.elements.link.href}" class="overflow-wrapper">
   <img src="${instance.elements.imageURL}" />
 </a>`
         }
