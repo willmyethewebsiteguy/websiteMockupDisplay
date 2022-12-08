@@ -6,7 +6,7 @@
 (function () {
   const pS = {
     id:'website-mockup',
-    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1.0/css.min.css',
+    cssUrl: 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/websiteMockupDisplay@1/styles.min.css',
   }
   
   let WebsiteMockupFunctions = (function(){
@@ -101,8 +101,6 @@
     }
 
     function setContainerHeight(instance) {
-      // console.log('hi', instance.elements.container)
-
       let container = instance.elements.container,
           containerHeight = container.getBoundingClientRect().height;
 
@@ -295,7 +293,9 @@
           return blockContent;
         },
         get imageURL() {
-          let src = this.blockContent.querySelector('img').dataset.src;
+          let img = this.blockContent.querySelector('img');
+          let src = img.dataset.src;
+          if (!src) src = img.src;
           return src;
         },
         get imageResolution() {
