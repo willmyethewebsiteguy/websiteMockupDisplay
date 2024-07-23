@@ -3,7 +3,6 @@
   Squarespace Website Mockups
   Copyright Will Myers 
 ========== */
-
 .wm-website-mockup-block {
   --scroll-speed: 15s;
   --shadow: var(--shadow-medium);
@@ -63,12 +62,6 @@
   -moz-user-select: none;
   -o-user-select: none;
 }
-.wm-website-mockup a {
-  display:block;
-}
-.wm-website-mockup .touch-container{
-  position:relative;
-}
 @supports not (aspect-ratio: 1/1) {
   .sqs-layout .wm-website-mockup .overflow-wrapper{
     height:0;
@@ -80,6 +73,13 @@
 }
 
 
+
+.wm-website-mockup a {
+  display:block;
+}
+.wm-website-mockup .touch-container{
+  position:relative;
+}
 
 /*Fluid Blocks*/
 .fe-block .wm-website-mockup{
@@ -107,7 +107,7 @@
   pointer-events: none;
 }
 
-@media (hover: hover) {
+@media (hover: hover)  {
   .wm-website-mockup:hover {
     transform: scale(calc(1 + (var(--hover-scale) / 100) ));
     box-shadow:var(--hover-shadow);
@@ -124,7 +124,7 @@
   }
 }
 
-@media (hover: none) {
+@media (hover: none) and (pointer: coarse) {
   .wm-website-mockup .overflow-wrapper{
     overflow-y: scroll;
     overflow-x: none;
