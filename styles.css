@@ -124,7 +124,7 @@
   }
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none), (pointer: coarse) {
   .wm-website-mockup .overflow-wrapper{
     overflow-y: scroll;
     overflow-x: none;
