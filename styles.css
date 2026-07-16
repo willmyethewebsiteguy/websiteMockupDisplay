@@ -4,6 +4,7 @@
   Copyright Will Myers 
 ========== */
 .wm-website-mockup-block {
+  --scroll-mode: auto;
   --scroll-speed: 15s;
   --shadow: var(--shadow-medium);
   --border: 0px solid currentColor;
@@ -122,12 +123,39 @@
     transform: translateY(calc(-100% + var(--height, 0px)));
     transition-duration:var(--scroll-speed);
   }
+
+  .wm-website-mockup[data-scroll-mode="manual"] .overflow-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .wm-website-mockup[data-scroll-mode="manual"]:hover img {
+    transform: translateY(0%);
+    transition-duration: 0s;
+  }
+}
+
+.wm-website-mockup[data-scroll-mode="manual"] .overflow-wrapper::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+.wm-website-mockup[data-scroll-mode="manual"] .overflow-wrapper::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.wm-website-mockup[data-scroll-mode="manual"] .overflow-wrapper::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+}
+
+.wm-website-mockup[data-scroll-mode="manual"] .overflow-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media (hover: none), (pointer: coarse) {
   .wm-website-mockup .overflow-wrapper{
     overflow-y: scroll;
-    overflow-x: none;
+    overflow-x: hidden;
     font-size: 0;
   }
   /* width */
@@ -236,7 +264,7 @@ body:not(.sqs-edit-mode-active) .wm-website-mockup-block .sqs-block-content{
 /*Set Touch Effects*/
 .sqs-device-view-phone .wm-website-mockup .overflow-wrapper{
   overflow-y: scroll;
-  overflow-x: none;
+  overflow-x: hidden;
   font-size: 0;
 }
 

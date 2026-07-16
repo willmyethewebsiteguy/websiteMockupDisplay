@@ -12,7 +12,7 @@
   let WebsiteMockupFunctions = (function(){
     // Functional Default Settings
     let defaults = {
-      
+      scrollMode: 'auto',
     };
 
     let global = window.wmWebsiteMockupSettings || {};
@@ -96,6 +96,13 @@
      */
     function getLocalSettings(el) {
       let localSettings = {};
+      let block = el.closest('.wm-website-mockup-block');
+      let scrollMode = block
+        ? window.getComputedStyle(block).getPropertyValue('--scroll-mode').trim()
+        : '';
+
+      scrollMode = scrollMode.replace(/^['"]|['"]$/g, '');
+      if (scrollMode === 'manual') localSettings.scrollMode = 'manual';
 
       return localSettings;
     }
@@ -132,6 +139,47 @@
     }
 
     /**
+     * Add keyboard controls to manual scroll mode
+     * @param {String} instance
+     */
+    function createKeyboardScrollListener(instance) {
+      if (instance.settings.scrollMode !== 'manual') return;
+
+      let container = instance.elements.overflowWrapper;
+
+      function handleEvent(event) {
+        let scrollAmount = Math.max(container.clientHeight * 0.9, 40);
+
+        switch (event.key) {
+          case 'ArrowDown':
+            container.scrollTop += 40;
+            break;
+          case 'ArrowUp':
+            container.scrollTop -= 40;
+            break;
+          case 'PageDown':
+            container.scrollTop += scrollAmount;
+            break;
+          case 'PageUp':
+            container.scrollTop -= scrollAmount;
+            break;
+          case 'Home':
+            container.scrollTop = 0;
+            break;
+          case 'End':
+            container.scrollTop = container.scrollHeight;
+            break;
+          default:
+            return;
+        }
+
+        event.preventDefault();
+      }
+
+      container.addEventListener('keydown', handleEvent);
+    }
+
+    /**
      * The constructor object
      * @param {String} selector The selector for the element to render into
      * @param {Object} options  User options and settings
@@ -161,6 +209,20 @@
         }
       };
 
+      this.elements.container.dataset.scrollMode =
+        this.settings.scrollMode === 'manual' ? 'manual' : 'auto';
+
+      if (
+        this.settings.scrollMode === 'manual' &&
+        this.elements.overflowWrapper.tagName !== 'A'
+      ) {
+        this.elements.overflowWrapper.tabIndex = 0;
+        this.elements.overflowWrapper.setAttribute(
+          'aria-label',
+          'Scrollable webpage preview'
+        );
+      }
+
       // Add Loading Event Listener
       createLoadListener(this);
 
@@ -169,6 +231,9 @@
       
       // Add Scroll Listener
       createScrollListener(this);
+
+      // Add Keyboard Scroll Listener
+      createKeyboardScrollListener(this);
       
       this.elements.container.classList.add('loaded');
       this.addCSS();
